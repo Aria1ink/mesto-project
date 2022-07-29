@@ -22,6 +22,9 @@
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__invisible-checkbox/element__invisible-checkbox.css);
+@import url(../blocks/element/__visible-checkbox/element__visible-checkbox.css);
+@import url(../blocks/element/__like/element__like.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
