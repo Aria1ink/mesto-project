@@ -1,0 +1,6 @@
+.footer {
+  width: calc(100% - 38px);
+  min-height: 14px;
+  margin: 0;
+  padding: 48px 19px 36px;
+}
