@@ -3,4 +3,10 @@
   border-radius: 50%;
   margin: 0;
   padding: 0;
+  justify-self: center;
+}
+@media screen and (min-width: 1024px) {
+  .profile__avatar {
+    justify-self: flex-start;
+  }
 }

@@ -8,3 +8,11 @@
   margin: 0;
   padding: 0 0 33px;
 }
+@media screen and (min-width: 1024px) {
+  .profile__about {
+    padding: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

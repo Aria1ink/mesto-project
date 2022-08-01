@@ -7,3 +7,10 @@
   margin: 0;
   padding: 28px 0 0;
 }
+@media screen and (min-width: 1024px) {
+  .header {
+    width: 880px;
+    margin: 0 auto;
+    padding: 45px 0 0;
+  }
+}

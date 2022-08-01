@@ -2,3 +2,8 @@
   margin: 0;
   padding: 0 27px 31px;
 }
+@media screen and (min-width: 1024px) {
+  .header__logo {
+    padding: 0 0 41px;
+  }
+}
