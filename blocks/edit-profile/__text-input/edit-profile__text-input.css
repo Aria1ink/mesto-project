@@ -12,3 +12,8 @@
   line-height: 17px;
   color: #000000;
 }
+@media screen and (min-width: 1024px) {
+  .edit-profile__text-input {
+    margin: 0 36px 30px;
+  }
+}

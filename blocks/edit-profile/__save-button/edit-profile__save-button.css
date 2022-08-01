@@ -1,5 +1,6 @@
 .edit-profile__save-button {
   background-color: rgba(0, 0, 0, 1);
+  border: none;
   border-radius: 2px;
   min-height: 46px;
   width: calc(100% - 44px);
@@ -15,4 +16,12 @@
 }
 .edit-profile__save-button:hover {
   background-color: rgba(0, 0, 0, .8);
+}
+@media screen and (min-width: 1024px) {
+  .edit-profile__save-button {
+    margin: 18px 36px 37px;
+    font-size: 18px;
+    line-height: 22px;
+    width: calc(100% - 72px);
+  }
 }

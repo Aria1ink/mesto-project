@@ -13,3 +13,11 @@
 .edit-profile__close-button:hover{
   opacity: .6;
 }
+@media screen and (min-width: 1024px) {
+  .edit-profile__close-button {
+    height: 32px;
+    width: 32px;
+    background-size: 32px 32px;
+    margin: -40px -40px 0 0;
+  }
+}

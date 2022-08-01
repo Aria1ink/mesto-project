@@ -28,8 +28,10 @@
       <section class="profile">
         <img class="profile__avatar" src="./images/avatar.jpg" alt="Жак-Ив Кусто в профиль">
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <div class="profile__name-container">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button"></button>
+          </div>
           <p class="profile__about">Исследователь океана</p>
         </div>
         <button class="profile__add-button"></button>
@@ -112,7 +114,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <section class="edit-profile">
+    <section class="edit-profile edit-profile_enabled">
       <!-- Enable: edit-profile_enabled -->
       <div class="edit-profile__overlay"></div>
       <form class="edit-profile__form" action="#" method="POST">
