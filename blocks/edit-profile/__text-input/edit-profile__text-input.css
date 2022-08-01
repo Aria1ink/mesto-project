@@ -1,0 +1,14 @@
+.edit-profile__text-input {
+  min-height: 27px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  width: calc(100% - 44px);
+  margin: 0 22px 30px;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}

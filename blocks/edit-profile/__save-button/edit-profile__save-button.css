@@ -1,0 +1,18 @@
+.edit-profile__save-button {
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 2px;
+  min-height: 46px;
+  width: calc(100% - 44px);
+  margin: 15px 22px 25px;
+  padding: 0;
+  color: #ffffff;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+.edit-profile__save-button:hover {
+  background-color: rgba(0, 0, 0, .8);
+}

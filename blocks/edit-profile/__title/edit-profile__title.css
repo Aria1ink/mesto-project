@@ -1,0 +1,11 @@
+.edit-profile__title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  padding: 25px 22px 75px;
+}
