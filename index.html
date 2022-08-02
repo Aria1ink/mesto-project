@@ -114,14 +114,16 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <section class="edit-profile edit-profile_enabled">
+    <section class="edit-profile">
       <!-- Enable: edit-profile_enabled -->
       <div class="edit-profile__overlay"></div>
       <form class="edit-profile__form" action="#" method="POST">
         <button class="edit-profile__close-button"></button>
         <h2 class="edit-profile__title">Редактировать профиль</h2>
-        <input class="edit-profile__text-input" type="text" placeholder="Жак-Ив Кусто">
-        <input class="edit-profile__text-input" type="text" placeholder="Исследователь океана">
+        <div class="edit-profile__input-fields">
+          <input class="edit-profile__text-input" type="text" placeholder="Жак-Ив Кусто">
+          <input class="edit-profile__text-input" type="text" placeholder="Исследователь океана">
+        </div>
         <input class="edit-profile__save-button" type="submit" value="Сохранить">
       </form>
     </section>

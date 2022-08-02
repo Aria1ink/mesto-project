@@ -1,9 +1,9 @@
 .edit-profile__text-input {
-  min-height: 27px;
+  min-height: 36px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   width: calc(100% - 44px);
-  margin: 0 22px 30px;
+  margin: 0;
   padding: 0;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
@@ -14,6 +14,7 @@
 }
 @media screen and (min-width: 1024px) {
   .edit-profile__text-input {
-    margin: 0 36px 30px;
+    margin: 0;
+    width: calc(100% - 72px);
   }
 }

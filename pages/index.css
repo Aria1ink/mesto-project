@@ -35,6 +35,7 @@
 @import url(../blocks/edit-profile/__form/edit-profile__form.css);
 @import url(../blocks/edit-profile/__close-button/edit-profile__close-button.css);
 @import url(../blocks/edit-profile/__title/edit-profile__title.css);
+@import url(../blocks/edit-profile/__input-fields/edit-profile__input-fields.css);
 @import url(../blocks/edit-profile/__text-input/edit-profile__text-input.css);
 @import url(../blocks/edit-profile/__save-button/edit-profile__save-button.css);
 @import url(../blocks/edit-profile/__overlay/edit-profile__overlay.css);
