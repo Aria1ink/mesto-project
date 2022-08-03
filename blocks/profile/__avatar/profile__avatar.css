@@ -5,7 +5,7 @@
   padding: 0;
   justify-self: center;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .profile__avatar {
     justify-self: flex-start;
   }

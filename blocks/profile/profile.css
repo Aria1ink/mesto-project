@@ -7,6 +7,16 @@
   align-content: center;
   justify-content: center;
 }
+@media screen and (min-width: 768px) {
+  .profile {
+    width: 581px;
+    margin: 0 auto;
+    padding: 42px 0 36px;
+    grid-template-columns: 150px 1fr min-content;
+    align-content: center;
+    justify-content: flex-start;
+  }
+}
 @media screen and (min-width: 1024px) {
   .profile {
     width: 880px;

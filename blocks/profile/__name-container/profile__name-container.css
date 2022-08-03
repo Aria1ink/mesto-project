@@ -8,7 +8,7 @@
   justify-content: center;
   gap: 10px;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .profile__name-container {
     padding: 0;
     column-gap: 18px;

@@ -3,3 +3,16 @@
   margin: 0;
   padding: 0 19px 0;
 }
+@media screen and (min-width: 768px) {
+  .content {
+    width: calc(100% - 150px);
+    padding: 0 75px 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .content {
+    width: 880px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
