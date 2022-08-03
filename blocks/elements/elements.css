@@ -1,14 +1,22 @@
 .elements {
   width: 100%;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: repeat(auto-fit, min-content);
+  grid-auto-columns: min-content;
+  column-gap: 17px;
   row-gap: 20px;
   padding: 0;
   margin: 0;
 }
+@media screen and (min-width: 768px) {
+  .elements {
+    column-gap: 17px;
+    width: 600px;
+    margin: 0 auto;
+  }
+}
 @media screen and (min-width: 1024px) {
   .elements {
-    grid-template-columns: repeat(3, 1fr);
     column-gap: 17px;
     width: 880px;
     margin: 0 auto;
