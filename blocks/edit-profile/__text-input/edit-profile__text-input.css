@@ -12,7 +12,7 @@
   line-height: 17px;
   color: #000000;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .edit-profile__text-input {
     margin: 0;
     width: calc(100% - 72px);

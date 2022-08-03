@@ -13,7 +13,13 @@
   position: relative;
   z-index: 2;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 425px) {
+  .edit-profile__form {
+    width: 387px;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 768px) {
   .edit-profile__form {
     width: 430px;
     height: 330px;

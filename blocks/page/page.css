@@ -11,8 +11,3 @@
   color: #ffffff;
   position: relative;
 }
-@media screen and (min-width: 1279px) {
-  .page {
-    min-width: 1280px;
-  }
-}

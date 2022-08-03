@@ -1,4 +1,3 @@
-
 .element__invisible-checkbox {
   position: absolute;
   width: 1px;
@@ -6,15 +5,15 @@
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
-.element__invisible-checkbox:disabled + .element__visible-checkbox{
-  background-image: url(../../../images/like.svg);
-}
 .element__invisible-checkbox:hover + .element__visible-checkbox{
   opacity: .5;
 }
+.element__invisible-checkbox:disabled + .element__visible-checkbox{
+  content: url(../../../images/like.svg);
+}
 .element__invisible-checkbox:active + .element__visible-checkbox{
-  background-image: url(../../../images/like_active.svg);
+  content: url(../../../images/like_active.svg);
 }
 .element__invisible-checkbox:checked + .element__visible-checkbox{
-  background-image: url(../../../images/like_active.svg);
+  content: url(../../../images/like_active.svg);
 }

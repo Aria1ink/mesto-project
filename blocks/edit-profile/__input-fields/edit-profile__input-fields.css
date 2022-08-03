@@ -8,7 +8,7 @@
   justify-content: center;
   gap: 20px;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .edit-profile__input-fields {
     margin: 10px 0 0;
   }

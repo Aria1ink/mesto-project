@@ -18,7 +18,7 @@
 .edit-profile__save-button:hover {
   background-color: rgba(0, 0, 0, .8);
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .edit-profile__save-button {
     margin: 18px 36px 37px;
     font-size: 18px;
