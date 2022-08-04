@@ -12,9 +12,11 @@
   right: 0;
   margin: 0;
   align-self: flex-end;
+  transition: opacity 0.2s ease-out 0.2s;
 }
 .edit-profile__close-button:hover{
   opacity: .6;
+  cursor: pointer;
 }
 @media screen and (min-width: 768px) {
   .edit-profile__close-button {
@@ -23,6 +25,5 @@
     background-size: 32px 32px;
     top: -40px;
     right: -40px;
-    margin: 0;
   }
 }

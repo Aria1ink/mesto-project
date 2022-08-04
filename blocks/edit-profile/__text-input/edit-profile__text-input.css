@@ -14,7 +14,6 @@
 }
 @media screen and (min-width: 768px) {
   .edit-profile__text-input {
-    margin: 0;
     width: calc(100% - 72px);
   }
 }

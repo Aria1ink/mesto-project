@@ -1,14 +1,17 @@
 .profile__name-container {
+  width: 98%;
   display: grid;
-  grid-template-columns: max-content 18px;
+  grid-template-columns: fit-content(93%) minmax(7%, 12%);
   margin: 0;
-  padding: 0 0 0 28px;
+  padding: 0;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 10px;
 }
 @media screen and (min-width: 768px) {
   .profile__name-container {
-    padding: 0;
+    width: 100%;
+    grid-template-columns: fit-content(95%) 5%;
+    justify-content: flex-start;
   }
 }

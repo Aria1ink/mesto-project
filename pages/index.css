@@ -18,26 +18,26 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/element/__container/element__container.css);
 @import url(../blocks/element/element.css);
-
-@import url(../blocks/element/__background/element__background.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__title/element__title.css);
-@import url(../blocks/element/__invisible-checkbox/element__invisible-checkbox.css);
-@import url(../blocks/element/__visible-checkbox/element__visible-checkbox.css);
+@import url(../blocks/like/like.css);
+@import url(../blocks/like/_status/like_status_active.css);
+@import url(../blocks/element/__like/element__like.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/edit-profile/edit-profile.css);
+@import url(../blocks/edit-profile/__popup/edit-profile__popup.css);
 @import url(../blocks/edit-profile/__form/edit-profile__form.css);
 @import url(../blocks/edit-profile/__close-button/edit-profile__close-button.css);
 @import url(../blocks/edit-profile/__title/edit-profile__title.css);
 @import url(../blocks/edit-profile/__input-fields/edit-profile__input-fields.css);
 @import url(../blocks/edit-profile/__text-input/edit-profile__text-input.css);
 @import url(../blocks/edit-profile/__save-button/edit-profile__save-button.css);
-@import url(../blocks/edit-profile/__overlay/edit-profile__overlay.css);
 @import url(../blocks/edit-profile/_enabled/edit-profile_enabled.css);
 
 @import url(../blocks/logo/_theme/logo_theme_dark.css);

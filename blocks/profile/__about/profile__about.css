@@ -7,6 +7,15 @@
   color: #ffffff;
   margin: 0;
   padding: 0 0 33px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .profile__about {
+    text-align: left;
+  }
 }
 @media screen and (min-width: 1024px) {
   .profile__about {

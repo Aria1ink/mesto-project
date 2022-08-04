@@ -1,0 +1,20 @@
+.like {
+  background-image: url(../../images/like.svg);
+  background-repeat: no-repeat;
+  background-size: 22px 19px;
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: transparent;
+  transition: opacity 0.2s ease-out 0.2s;
+}
+.like:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+.like:disabled {
+  background-image: url(../../images/like.svg);
+}
+.like:active {
+  background-image: url(../../images/like_active.svg);
+}

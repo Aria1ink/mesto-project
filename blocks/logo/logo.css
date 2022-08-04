@@ -1,4 +1,8 @@
 .logo {
+  background: url(../../../images/logo.svg);
+  background-repeat: no-repeat;
+  background-size: 103.74px 24.4px;
+  background-position: top;
   width: 103.74px;
   height: 24.4px;
 }
@@ -6,5 +10,6 @@
   .logo {
     width: 142px;
     height: 33px;
+    background-size: 142px 33px;
   }
 }
