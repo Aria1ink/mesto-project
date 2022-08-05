@@ -1,6 +1,5 @@
 .element__card {
   width: 282px;
-  height: 361px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -9,7 +8,6 @@
   justify-content: center;
   background-color: #ffffff;
   border-radius: 10px;
-  overflow: hidden;
   list-style: none;
   text-decoration: none;
 }

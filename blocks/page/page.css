@@ -11,7 +11,4 @@
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
   position: relative;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }

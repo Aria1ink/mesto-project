@@ -1,17 +1,16 @@
 # Проект: Место
 
-### Обзор
+Лента фото с возможностью ставить лайки и простым профилем пользователя.
 
-* Figma
-* Картинки
+### Технологии
+
+* HTML
+* CSS
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+[Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-**Картинки**
+**GitHub Pages**
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+[ссылка на GitHub Pages](https://aria1ink.github.io/mesto-project/)

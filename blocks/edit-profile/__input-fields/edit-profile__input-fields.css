@@ -1,15 +1,12 @@
 .edit-profile__input-fields {
   margin: 17px 0 0;
   padding: 0;
+  margin: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
-}
-@media screen and (min-width: 768px) {
-  .edit-profile__input-fields {
-    margin: 10px 0 0;
-  }
+  grid-area: input;
 }
