@@ -1,0 +1,25 @@
+.add-card__form {
+  width: calc(100% - 44px);
+  margin: 0;
+  padding: 25px 22px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "title"
+    "." 
+    "input"
+    "." 
+    "button";
+  grid-template-rows: min-content 65px min-content 45px min-content;
+  justify-content: center;
+  align-content: flex-start;
+  position: relative;
+  z-index: 3;
+}
+@media screen and (min-width: 425px) {
+  .add-card__form {
+    padding: 34px 36px;
+    width: calc(100% - 72px);
+    grid-template-rows: min-content 40px min-content 46px min-content;
+  }
+}

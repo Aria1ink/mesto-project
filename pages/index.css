@@ -39,3 +39,13 @@
 @import url(../blocks/edit-profile/__text-input/edit-profile__text-input.css);
 @import url(../blocks/edit-profile/__save-button/edit-profile__save-button.css);
 @import url(../blocks/edit-profile/_enabled/edit-profile_enabled.css);
+
+@import url(../blocks/add-card/add-card.css);
+@import url(../blocks/add-card/__popup/add-card__popup.css);
+@import url(../blocks/add-card/__form/add-card__form.css);
+@import url(../blocks/add-card/__close-button/add-card__close-button.css);
+@import url(../blocks/add-card/__title/add-card__title.css);
+@import url(../blocks/add-card/__input-fields/add-card__input-fields.css);
+@import url(../blocks/add-card/__text-input/add-card__text-input.css);
+@import url(../blocks/add-card/__save-button/add-card__save-button.css);
+@import url(../blocks/add-card/_enabled/add-card_enabled.css);

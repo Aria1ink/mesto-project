@@ -1,6 +1,9 @@
 const editProfileOpenButton = document.querySelector('.profile__edit-button');
 const editProfileCloseButton = document.querySelector('.edit-profile__close-button');
 const editProfileSaveButton = document.querySelector('.edit-profile__save-button');
+const addCardOpenButton = document.querySelector('.profile__add-button');
+const addCardCloseButton = document.querySelector('.add-card__close-button');
+const addCardSaveButton = document.querySelector('.add-card__save-button');
 const initialCards = [
   {
     name: 'Архыз',
@@ -28,8 +31,11 @@ const initialCards = [
   }
   ];
 editProfileOpenButton.addEventListener('click', editProfileOpen);
-editProfileCloseButton.addEventListener('click', editProfileChangeState);
+editProfileCloseButton.addEventListener('click', () => { popupChangeState('.edit-profile', 'edit-profile_enabled');});
 editProfileSaveButton.addEventListener('click', editProfileSave);
+addCardOpenButton.addEventListener('click', () => { popupChangeState('.add-card', 'add-card_enabled');});
+addCardCloseButton.addEventListener('click', () => { popupChangeState('.add-card', 'add-card_enabled');});
+//addCardSaveButton.addEventListener('click', popupChangeState('.addCard', 'addCard_enabled'));
 
 initialCards.forEach(cardCreate);
 
@@ -40,7 +46,7 @@ function editProfileOpen () {
   const editProfileAbout= document.getElementsByName('user-info');
   editProfileName[0].value = profileName.textContent;
   editProfileAbout[0].value = profileAbout.textContent;
-  editProfileChangeState();
+  popupChangeState('.edit-profile', 'edit-profile_enabled');
 };
 function editProfileSave (evt) {
   evt.preventDefault(); 
@@ -59,15 +65,15 @@ function editProfileSave (evt) {
     profileAbout.replaceWith(newProfileAbout);
     editProfileName[0].placeholder = "Жак-Ив Кусто"
     editProfileAbout[0].placeholder = "Исследователь океана"
-    editProfileChangeState();
+    popupChangeState('.edit-profile', 'edit-profile_enabled');
   } else {
     editProfileName[0].placeholder = "Пожалуйста, заполните все поля."
     editProfileAbout[0].placeholder = "Пожалуйста, заполните все поля."
   };
 };
-function editProfileChangeState () {
-  const editProfilePopup = document.querySelector('.edit-profile');
-  editProfilePopup.classList.toggle('edit-profile_enabled');
+function popupChangeState (element, state) {
+  const editProfilePopup = document.querySelector(element);
+  editProfilePopup.classList.toggle(state);
 };
 function cardCreate (item) {
   const firstCard = document.querySelector('.element__card');

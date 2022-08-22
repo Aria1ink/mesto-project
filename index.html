@@ -88,6 +88,20 @@
         </form>
       </div>
     </section>
+    <section class="add-card">
+      <!-- Enable: add-card_enabled -->
+      <div class="add-card__popup">
+        <form class="add-card__form" name="add-card" action="#"  method="POST">
+          <button class="add-card__close-button" type="button"></button>
+          <h3 class="add-card__title">Новое место</h3>
+          <div class="add-card__input-fields">
+            <input class="add-card__text-input" name="place-name" type="text" placeholder="Название">
+            <input class="add-card__text-input" name="place-link" type="text" placeholder="Ссылка на картинку">
+          </div>
+          <button class="add-card__save-button" type="submit">Создать</button>
+        </form>
+      </div>
+    </section>
   </div>
   <template id="cardTemplate">
     <li class="element__card">
