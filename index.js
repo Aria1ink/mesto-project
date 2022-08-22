@@ -4,6 +4,7 @@ const editProfileSaveButton = document.querySelector('.edit-profile__save-button
 const addCardOpenButton = document.querySelector('.profile__add-button');
 const addCardCloseButton = document.querySelector('.add-card__close-button');
 const addCardSaveButton = document.querySelector('.add-card__save-button');
+const likes = document.querySelectorAll('.like');
 const initialCards = [
   {
     name: 'Архыз',
@@ -35,9 +36,10 @@ editProfileCloseButton.addEventListener('click', () => { popupChangeState('.edit
 editProfileSaveButton.addEventListener('click', editProfileSave);
 addCardOpenButton.addEventListener('click', () => { popupChangeState('.add-card', 'add-card_enabled');});
 addCardCloseButton.addEventListener('click', () => { popupChangeState('.add-card', 'add-card_enabled');});
-//addCardSaveButton.addEventListener('click', popupChangeState('.addCard', 'addCard_enabled'));
-
+addCardSaveButton.addEventListener('click', addCardSave);
+likes.forEach((element) => {element.addEventListener('click', liked)});
 initialCards.forEach(cardCreate);
+
 
 function editProfileOpen () {
   const profileName = document.querySelector('.profile__name');
@@ -63,12 +65,30 @@ function editProfileSave (evt) {
     newProfileAbout.textContent = editProfileAbout[0].value;
     newProfileAbout.classList.add('profile__about');
     profileAbout.replaceWith(newProfileAbout);
-    editProfileName[0].placeholder = "Жак-Ив Кусто"
-    editProfileAbout[0].placeholder = "Исследователь океана"
+    editProfileName[0].placeholder = "Жак-Ив Кусто";
+    editProfileAbout[0].placeholder = "Исследователь океана";
     popupChangeState('.edit-profile', 'edit-profile_enabled');
   } else {
-    editProfileName[0].placeholder = "Пожалуйста, заполните все поля."
-    editProfileAbout[0].placeholder = "Пожалуйста, заполните все поля."
+    editProfileName[0].placeholder = "Пожалуйста, заполните все поля.";
+    editProfileAbout[0].placeholder = "Пожалуйста, заполните все поля.";
+  };
+};
+function addCardSave (evt) {
+  evt.preventDefault();
+  const addCardPlaceName = document.getElementsByName('place-name');
+  const addCardPlaceLink = document.getElementsByName('place-link');
+  let item = [{name: '', link: ''}];
+  if (addCardPlaceName[0].value && addCardPlaceLink[0].value) {
+    item['name'] = addCardPlaceName[0].value;
+    item['link'] = addCardPlaceLink[0].value;
+    console.log(item);
+    cardCreate(item);
+    addCardPlaceName[0].placeholder = "Название";
+    addCardPlaceLink[0].placeholder = "Ссылка на картинку";
+    popupChangeState('.add-card', 'add-card_enabled');
+  } else {
+    addCardPlaceName[0].placeholder = "Пожалуйста, заполните все поля.";
+    addCardPlaceLink[0].placeholder = "Пожалуйста, заполните все поля.";
   };
 };
 function popupChangeState (element, state) {
@@ -76,11 +96,20 @@ function popupChangeState (element, state) {
   editProfilePopup.classList.toggle(state);
 };
 function cardCreate (item) {
-  const firstCard = document.querySelector('.element__card');
-  const cardTemplate = document.querySelector('#cardTemplate').content;
-  const card = cardTemplate.querySelector('.element__card').cloneNode(true);
-  card.querySelector('.element__title').textContent = item.name;
-  card.querySelector('.element__image').src = item.link;
-  card.querySelector('.element__image').alt = item.name;
-  firstCard.before(card);
+  if (item) {
+    const firstCard = document.querySelector('.element__card');
+    const cardTemplate = document.querySelector('#cardTemplate').content;
+    const card = cardTemplate.querySelector('.element__card').cloneNode(true);
+    card.querySelector('.element__title').textContent = item.name;
+    card.querySelector('.element__image').src = item.link;
+    card.querySelector('.element__image').alt = item.name;
+    card.querySelector('.like').addEventListener('click', liked);
+    firstCard.before(card);
+  } else {
+    alert('Ошибка загрузки');
+  };
+};
+function liked (evt) {
+  evt.preventDefault();
+  evt.target.classList.toggle('like_status_active');
 }
