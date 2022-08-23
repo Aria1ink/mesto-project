@@ -91,7 +91,6 @@ function addCardSave (evt) {
   if (addCardPlaceName[0].value && addCardPlaceLink[0].value) {
     item['name'] = addCardPlaceName[0].value;
     item['link'] = addCardPlaceLink[0].value;
-    console.log(item);
     cardCreate(item);
     addCardPlaceName[0].placeholder = "Название";
     addCardPlaceLink[0].placeholder = "Ссылка на картинку";
