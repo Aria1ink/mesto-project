@@ -28,6 +28,7 @@
         <ul class="element">
           <li class="element__card">
             <img class="element__image" src="./images/karachaevsk.jpg" alt="Храм на фоне гор">
+            <button class="element__remove" type="button"></button>
             <div class="element__info">
               <h2 class="element__title">Карачаевск</h2>
               <button class="element__like like like_status_active" type="button"></button>
@@ -35,6 +36,7 @@
           </li>
           <li class="element__card">
             <img class="element__image" src="./images/elbrus.jpg" alt="Закат на горе">
+            <button class="element__remove" type="button"></button>
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
               <button class="element__like like" type="button"></button>
@@ -42,6 +44,7 @@
           </li>
           <li class="element__card">
             <img class="element__image" src="./images/dombai.jpg" alt="Горы и небо застеленное тучами">
+            <button class="element__remove" type="button"></button>
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
               <button class="element__like like" type="button"></button>
@@ -49,6 +52,7 @@
           </li>
           <li class="element__card">
             <img class="element__image" src="./images/elbrus.jpg" alt="Закат на горе">
+            <button class="element__remove" type="button"></button>
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
               <button class="element__like like" type="button"></button>
@@ -56,6 +60,7 @@
           </li>
           <li class="element__card">
             <img class="element__image" src="./images/dombai.jpg" alt="Горы и небо застеленное тучами">
+            <button class="element__remove" type="button"></button>
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
               <button class="element__like like" type="button"></button>
@@ -63,6 +68,7 @@
           </li>
           <li class="element__card">
             <img class="element__image" src="./images/karachaevsk.jpg" alt="Храм на фоне гор">
+            <button class="element__remove" type="button"></button>
             <div class="element__info">
               <h2 class="element__title">Карачаево-Черкесия</h2>
               <button class="element__like like" type="button"></button>
@@ -102,10 +108,21 @@
         </form>
       </div>
     </section>
+    <section class="image-popup">
+      <!-- Enable: image-popup_enabled -->
+      <div class="image-popup__container">
+        <button class="image-popup__close-button" type="button"></button>
+        <figure class="image-popup__figure">
+          <img class="image-popup__image" src="" alt="">
+          <figcaption class="image-popup__caption"></figcaption>
+        </figure>
+      </div>
+    </section>
   </div>
   <template id="cardTemplate">
     <li class="element__card">
       <img class="element__image" src="" alt="">
+      <button class="element__remove" type="button"></button>
       <div class="element__info">
         <h2 class="element__title"></h2>
         <button class="element__like like" type="button"></button>
