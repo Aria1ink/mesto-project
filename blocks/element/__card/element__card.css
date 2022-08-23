@@ -1,11 +1,12 @@
 .element__card {
   width: 282px;
+  min-height: 361px;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #ffffff;
   border-radius: 10px;
   list-style: none;

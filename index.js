@@ -7,6 +7,7 @@ const cardImage = document.querySelectorAll('.element__image');
 const addCardSaveButton = document.querySelector('.add-card__save-button');
 const cardRemoveButton = document.querySelectorAll('.element__remove');
 const likes = document.querySelectorAll('.like');
+const imagePopupCloseButton = document.querySelector('.image-popup__close-button');
 const initialCards = [
   {
     name: 'Архыз',
@@ -36,16 +37,18 @@ const initialCards = [
 //Open
 editProfileOpenButton.addEventListener('click', editProfileOpen);
 addCardOpenButton.addEventListener('click', () => { popupChangeState('.add-card', 'add-card_enabled');});
+cardImage.forEach((element) => {element.addEventListener('click', openImage)});
 //Close
 editProfileCloseButton.addEventListener('click', () => { popupChangeState('.edit-profile', 'edit-profile_enabled');});
 addCardCloseButton.addEventListener('click', () => { popupChangeState('.add-card', 'add-card_enabled');});
+imagePopupCloseButton.addEventListener('click', () => {popupChangeState('.image-popup', 'image-popup_enabled');});
 //Save
 editProfileSaveButton.addEventListener('click', editProfileSave);
 addCardSaveButton.addEventListener('click', addCardSave);
 //Content buttons
 likes.forEach((element) => {element.addEventListener('click', liked)});
 cardRemoveButton.forEach((element) => {element.addEventListener('click', cardRemove)});
-cardImage.forEach((element) => {element.addEventListener('click', openImage)});
+
 initialCards.forEach(cardCreate);
 
 function editProfileOpen () {
@@ -126,11 +129,9 @@ function cardRemove (evt) {
   evt.target.parentElement.replaceWith('');
 };
 function openImage (evt) {
-  popupChangeState('.image-popup', 'image-popup_enabled');
-  const imagePopupCloseButton = document.querySelector('.image-popup__close-button');
   const imagePopupImage = document.querySelector('.image-popup__image');
   const imagePopupCaption = document.querySelector('.image-popup__caption');
-  imagePopupCloseButton.addEventListener('click', () => { popupChangeState('.image-popup', 'image-popup_enabled');});
+  popupChangeState('.image-popup', 'image-popup_enabled');
   imagePopupImage.setAttribute('src', evt.target.getAttribute('src'));
   if (container = evt.target.parentElement) {
     imagePopupCaption.textContent = container.querySelector('.element__title').textContent;

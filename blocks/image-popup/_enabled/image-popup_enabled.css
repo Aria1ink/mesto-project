@@ -1,3 +1,6 @@
 .image-popup_enabled {
-  display: flex;
+  /*display: flex;*/
+  opacity: 1;
+  height: 100vh;
+  transition: opacity 0.2s ease-out 0.2s;
 }
