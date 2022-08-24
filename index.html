@@ -26,92 +26,43 @@
       </section>
       <section class="elements">
         <ul class="element">
-          <li class="element__card">
-            <img class="element__image" src="./images/karachaevsk.jpg" alt="Храм на фоне гор">
-            <button class="element__remove" type="button"></button>
-            <div class="element__info">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like like like_status_active" type="button"></button>
-            </div>
-          </li>
-          <li class="element__card">
-            <img class="element__image" src="./images/elbrus.jpg" alt="Закат на горе">
-            <button class="element__remove" type="button"></button>
-            <div class="element__info">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__card">
-            <img class="element__image" src="./images/dombai.jpg" alt="Горы и небо застеленное тучами">
-            <button class="element__remove" type="button"></button>
-            <div class="element__info">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__card">
-            <img class="element__image" src="./images/elbrus.jpg" alt="Закат на горе">
-            <button class="element__remove" type="button"></button>
-            <div class="element__info">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__card">
-            <img class="element__image" src="./images/dombai.jpg" alt="Горы и небо застеленное тучами">
-            <button class="element__remove" type="button"></button>
-            <div class="element__info">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__card">
-            <img class="element__image" src="./images/karachaevsk.jpg" alt="Храм на фоне гор">
-            <button class="element__remove" type="button"></button>
-            <div class="element__info">
-              <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button class="element__like like" type="button"></button>
-            </div>
-          </li>
+          
         </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <section class="edit-profile">
-      <!-- Enable: edit-profile_enabled -->
-      <div class="edit-profile__popup">
-        <form class="edit-profile__form" name="edit-profile" action="#"  method="POST">
-          <button class="edit-profile__close-button" type="button"></button>
-          <h3 class="edit-profile__title">Редактировать профиль</h3>
-          <div class="edit-profile__input-fields">
-            <input class="edit-profile__text-input" name="user-name" type="text" placeholder="Жак-Ив Кусто">
-            <input class="edit-profile__text-input" name="user-info" type="text" placeholder="Исследователь океана">
+    <section class="popup profile-popup popup_open">
+      <div class="popup__container">
+        <form class="popup__form" name="edit-profile" action="#"  method="POST">
+          <button class="popup__close" type="button"></button>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <div class="popup__input-fields">
+            <input class="popup__text-input" name="user-name" type="text" placeholder="Жак-Ив Кусто">
+            <input class="popup__text-input" name="user-info" type="text" placeholder="Исследователь океана">
           </div>
-          <button class="edit-profile__save-button" type="submit">Сохранить</button>
+          <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
-    <section class="add-card">
-      <!-- Enable: add-card_enabled -->
-      <div class="add-card__popup">
-        <form class="add-card__form" name="add-card" action="#"  method="POST">
-          <button class="add-card__close-button" type="button"></button>
-          <h3 class="add-card__title">Новое место</h3>
-          <div class="add-card__input-fields">
-            <input class="add-card__text-input" name="place-name" type="text" placeholder="Название">
-            <input class="add-card__text-input" name="place-link" type="url" placeholder="Ссылка на картинку">
+    <section class="popup add-card-popup">
+      <div class="popup__container">
+        <form class="popup__form" name="add-card" action="#"  method="POST">
+          <button class="popup__close" type="button"></button>
+          <h3 class="popup__title">Новое место</h3>
+          <div class="popup__input-fields">
+            <input class="popup__text-input" name="place-name" type="text" placeholder="Название">
+            <input class="popup__text-input" name="place-link" type="url" placeholder="Ссылка на картинку">
           </div>
-          <button class="add-card__save-button" type="submit">Создать</button>
+          <button class="popup__submit" type="submit">Создать</button>
         </form>
       </div>
     </section>
-    <section class="image-popup">
+    <section class="popup image-popup">
       <!-- Enable: image-popup_enabled -->
       <div class="image-popup__container">
-        <button class="image-popup__close-button" type="button"></button>
+        <button class="popup__close" type="button"></button>
         <figure class="image-popup__figure">
           <img class="image-popup__image" src="" alt="">
           <figcaption class="image-popup__caption"></figcaption>
@@ -129,6 +80,6 @@
       </div>
     </li>
   </template>
-  <script src="./index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

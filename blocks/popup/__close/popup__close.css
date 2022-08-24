@@ -1,4 +1,4 @@
-.edit-profile__close-button {
+.popup__close {
   background-color: transparent;
   border: none;
   background-image: url(../../../images/close_button.svg);
@@ -14,12 +14,12 @@
   align-self: flex-end;
   transition: opacity 0.2s ease-out 0.2s;
 }
-.edit-profile__close-button:hover{
+.popup__close:hover{
   opacity: .6;
   cursor: pointer;
 }
 @media screen and (min-width: 768px) {
-  .edit-profile__close-button {
+  .popup__close {
     height: 32px;
     width: 32px;
     background-size: 32px 32px;

@@ -1,26 +1,3 @@
-.image-popup {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease-out 0.2s;
-}
 .image-popup::after {
-  width: 100vw;
-  height: 100vh;
-  content: "";
   background-color: rgba(0, 0, 0, .9);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }

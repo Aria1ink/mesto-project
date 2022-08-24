@@ -1,4 +1,4 @@
-.add-card__save-button {
+.popup__submit {
   background-color: rgba(0, 0, 0, 1);
   border: none;
   border-radius: 2px;
@@ -18,12 +18,12 @@
   grid-area: button;
   transition: background-color 0.2s ease-out 0.2s;
 }
-.add-card__save-button:hover {
+.popup__submit:hover {
   background-color: rgba(0, 0, 0, .8);
   cursor: pointer;
 }
 @media screen and (min-width: 768px) {
-  .add-card__save-button {
+  .popup__submit {
     font-size: 18px;
     line-height: 22px;
     min-height: 50px;

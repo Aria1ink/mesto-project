@@ -1,4 +1,4 @@
-.edit-profile__title {
+.popup__title {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -11,7 +11,7 @@
   grid-area: title;
 }
 @media screen and (min-width: 425px) {
-  .edit-profile__title {
+  .popup__title {
     font-size: 24px;
     line-height: 29px;
   }
