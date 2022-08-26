@@ -59,10 +59,10 @@ cardPopup.addEventListener('submit', saveCard);
 initialCards.forEach(createCard);
 //interface
 function openPopup (popup) {
-  popup.classList.add('popup_open');
+  popup.classList.add('popup_opened');
 };
 function closePopup (evt) {
-  evt.target.closest('.popup').classList.remove('popup_open');
+  evt.target.closest('.popup').classList.remove('popup_opened');
 };
 function addLike (evt) {
   evt.preventDefault();
