@@ -33,39 +33,38 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <section class="popup profile-popup popup_open">
+    <section class="popup profile-popup">
       <div class="popup__container">
-        <form class="popup__form" name="edit-profile" action="#"  method="POST">
+        <form class="popup__form" name="edit-profile" action="#" method="POST">
           <button class="popup__close" type="button"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <div class="popup__input-fields">
-            <input class="popup__text-input" name="user-name" type="text" placeholder="Жак-Ив Кусто">
-            <input class="popup__text-input" name="user-info" type="text" placeholder="Исследователь океана">
+            <input class="popup__text-input" id="user-name" required name="user-name" type="text" placeholder="Жак-Ив Кусто">
+            <input class="popup__text-input" id="user-info" required name="user-info" type="text" placeholder="Исследователь океана">
           </div>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
-    <section class="popup add-card-popup">
+    <section class="popup card-popup">
       <div class="popup__container">
         <form class="popup__form" name="add-card" action="#"  method="POST">
           <button class="popup__close" type="button"></button>
           <h3 class="popup__title">Новое место</h3>
           <div class="popup__input-fields">
-            <input class="popup__text-input" name="place-name" type="text" placeholder="Название">
-            <input class="popup__text-input" name="place-link" type="url" placeholder="Ссылка на картинку">
+            <input class="popup__text-input" id="place-name" required name="place-name" type="text" placeholder="Название">
+            <input class="popup__text-input" id="place-link" required name="place-link" type="url" placeholder="Ссылка на картинку">
           </div>
           <button class="popup__submit" type="submit">Создать</button>
         </form>
       </div>
     </section>
-    <section class="popup image-popup">
-      <!-- Enable: image-popup_enabled -->
-      <div class="image-popup__container">
-        <button class="popup__close" type="button"></button>
-        <figure class="image-popup__figure">
-          <img class="image-popup__image" src="" alt="">
-          <figcaption class="image-popup__caption"></figcaption>
+    <section class="popup popup_type_image image-popup">
+      <div class="popup__image-container">
+        <button class="popup__close popup__close_type_image" type="button"></button>
+        <figure class="popup__figure">
+          <img class="popup__image" src="" alt="">
+          <figcaption class="popup__caption"></figcaption>
         </figure>
       </div>
     </section>

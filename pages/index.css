@@ -32,39 +32,19 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_type/popup_type_image.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__close/_type/popup__close_type_image.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input-fields/popup__input-fields.css);
 @import url(../blocks/popup/__text-input/popup__text-input.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/_open/popup_open.css);
 
-@import url(../blocks/edit-profile/edit-profile.css);
-@import url(../blocks/edit-profile/__popup/edit-profile__popup.css);
-
-@import url(../blocks/edit-profile/__close-button/edit-profile__close-button.css);
-@import url(../blocks/edit-profile/__title/edit-profile__title.css);
-@import url(../blocks/edit-profile/__input-fields/edit-profile__input-fields.css);
-@import url(../blocks/edit-profile/__text-input/edit-profile__text-input.css);
-@import url(../blocks/edit-profile/__save-button/edit-profile__save-button.css);
-@import url(../blocks/edit-profile/_enabled/edit-profile_enabled.css);
-
-@import url(../blocks/add-card/add-card.css);
-@import url(../blocks/add-card/__popup/add-card__popup.css);
-
-@import url(../blocks/add-card/__close-button/add-card__close-button.css);
-@import url(../blocks/add-card/__title/add-card__title.css);
-@import url(../blocks/add-card/__input-fields/add-card__input-fields.css);
-@import url(../blocks/add-card/__text-input/add-card__text-input.css);
-@import url(../blocks/add-card/__save-button/add-card__save-button.css);
-@import url(../blocks/add-card/_enabled/add-card_enabled.css);
-
 @import url(../blocks/image-popup/image-popup.css);
-@import url(../blocks/image-popup/__container/image-popup__container.css);
-@import url(../blocks/image-popup/__close-button/image-popup__close-button.css);
-@import url(../blocks/image-popup/__figure/image-popup__figure.css);
-@import url(../blocks/image-popup/__image/image-popup__image.css);
-@import url(../blocks/image-popup/__caption/image-popup__caption.css);
-@import url(../blocks/image-popup/_enabled/image-popup_enabled.css);
