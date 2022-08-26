@@ -58,7 +58,7 @@ function openProfilePopup () {
   editProfileAbout.textContent = profileAbout.textContent;
   openPopup(profilePopup);
 };
-function editProfileSave (evt) {
+function saveProfile (evt) {
   evt.preventDefault(); 
   const profileName = document.querySelector('.profile__name');
   const profileAbout = document.querySelector('.profile__about');
@@ -81,7 +81,7 @@ function editProfileSave (evt) {
     editProfileAbout[0].placeholder = "Пожалуйста, заполните все поля.";
   };
 };
-function addCardSave (evt) {
+function saveCard (evt) {
   evt.preventDefault();
   const addCardPlaceName = document.getElementsByName('place-name');
   const addCardPlaceLink = document.getElementsByName('place-link');
@@ -125,8 +125,6 @@ function cardRemove (evt) {
   evt.target.parentElement.replaceWith('');
 };
 function openImage (evt) {
-  const imagePopupImage = document.querySelector('.image-popup__image');
-  const imagePopupCaption = document.querySelector('.image-popup__caption');
   openPopup(imagePopup);
   imagePopupImage.setAttribute('src', evt.target.getAttribute('src'));
   if (container = evt.target.parentElement) {
