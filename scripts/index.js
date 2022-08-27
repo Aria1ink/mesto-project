@@ -45,7 +45,10 @@ const initialCards = [
   }
   ];
 //Close popup
-closePopupButtons.forEach((element) => {element.addEventListener('click', closePopup);});
+closePopupButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 //Open popup
 openProfilePopupButton.addEventListener('click', openProfilePopup);
 openCardPopup.addEventListener('click', () => {
@@ -61,8 +64,14 @@ initialCards.forEach(createCard);
 function openPopup (popup) {
   popup.classList.add('popup_opened');
 };
-function closePopup (evt) {
-  evt.target.closest('.popup').classList.remove('popup_opened');
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
+};
+function hideClosestPopup (evt) {
+  const popup = evt.target.closest('.popup')
+  if (popup) {
+    closePopup(popup);
+  }
 };
 function addLike (evt) {
   evt.preventDefault();
@@ -82,7 +91,7 @@ function saveProfile (evt) {
   if (profileNameInput.value && profileAboutInput.value) {
     profileName.textContent = profileNameInput.value;
     profileAbout.textContent = profileAboutInput.value;
-    closePopup(evt);
+    closePopup(profilePopup);
   } else {
     alert("Пожалуйста, заполните все поля.");
   };
@@ -90,12 +99,12 @@ function saveProfile (evt) {
 //card
 function saveCard (evt) {
   evt.preventDefault();
-  let item = [{name: '', link: ''}];
   if (cardPlaceNameInput.value && cardPlaceLinkInput.value) {
+    const item = {};
     item['name'] = cardPlaceNameInput.value;
     item['link'] = cardPlaceLinkInput.value;
     createCard(item);
-    closePopup(evt);
+    closePopup(cardPopup);
   } else {
     alert("Пожалуйста, заполните все поля.");
   };
@@ -109,7 +118,7 @@ function getCard (item) {
   cardImage.alt = item.name;
   card.querySelector('.like').addEventListener('click', addLike);
   card.querySelector('.element__remove').addEventListener('click', removeCard);
-  cardImage.addEventListener('click', openImage);
+  cardImage.addEventListener('click', (evt) => {openImage(cardImage.src, cardImage.alt);});
   return card;
 };
 function createCard (item) {
@@ -123,12 +132,12 @@ function createCard (item) {
 function removeCard (evt) {
   evt.target.closest('.element__card').remove();
 };
-function openImage (evt) {
+function openImage (src, alt) {
   openPopup(imagePopup);
-  imagePopupImage.setAttribute('src', evt.target.getAttribute('src'));
-  imagePopupImage.setAttribute('alt', evt.target.getAttribute('alt'));
-  if (container = evt.target.closest('.element__card')) {
-    imagePopupCaption.textContent = container.querySelector('.element__title').textContent;
+  imagePopupImage.setAttribute('src', src);
+  imagePopupImage.setAttribute('alt', alt);
+  if (alt) {
+    imagePopupCaption.textContent = alt;
   } else {
     imagePopupCaption.textContent = '';
   };
