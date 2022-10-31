@@ -18,7 +18,10 @@
 
 [Ссылка на второй макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 
-[Чеклист](https://code.s3.yandex.net/web-developer/checklists-pdf/web-plus/checklist-4.pdf)
+[Ссылка на третий макет в Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
+
+[Чеклист 1](https://code.s3.yandex.net/web-developer/checklists-pdf/web-plus/checklist-4.pdf)
+[Чеклист 2](https://code.s3.yandex.net/web-developer/checklists-pdf/web-plus/checklist-8.pdf)
 
 ### GitHub Pages
 

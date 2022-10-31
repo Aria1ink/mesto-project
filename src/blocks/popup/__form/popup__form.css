@@ -1,5 +1,6 @@
 .popup__form {
   width: calc(100% - 44px);
+  min-height: calc(330px - 68px);
   margin: 0;
   padding: 25px 22px;
   display: grid;
@@ -10,7 +11,7 @@
     "input"
     "." 
     "button";
-  grid-template-rows: min-content 65px min-content 45px min-content;
+  grid-template-rows: min-content minmax(30px, 1fr) min-content minmax(30px, 1fr) min-content;
   justify-content: center;
   align-content: flex-start;
   position: relative;
@@ -20,6 +21,6 @@
   .popup__form {
     padding: 34px 36px;
     width: calc(100% - 72px);
-    grid-template-rows: min-content 40px min-content 46px min-content;
+    grid-template-rows: min-content minmax(40px, 2fr) min-content minmax(20px, 1fr) min-content;
   }
 }
