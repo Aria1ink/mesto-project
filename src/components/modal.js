@@ -11,7 +11,7 @@ const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 const profilePopup = document.querySelector('.profile-popup');
 const profileNameInput = document.getElementById('user-name');
 const profileAboutInput= document.getElementById('user-info');
-const cardPopup = document.querySelector('.card-popup');
+export const cardPopup = document.querySelector('.card-popup');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
 // активация кнопки закрытия попапа
 closePopupButtons.forEach((button) => {
@@ -46,7 +46,7 @@ function closePopupByKey (evt) {
   };
 }
 // закрытие попапа
-function closePopup (popup) {
+export function closePopup (popup) {
   if(popup.classList.contains('popup') || popup.classList.contains('popup__close-button')){
     popup.classList.remove('popup_opened');
     document.removeEventListener('mousedown', closePopupByEvt);
