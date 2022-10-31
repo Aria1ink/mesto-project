@@ -1,3 +1,4 @@
+import {openImage} from './modal.js';
 //cards
 export const openCardPopup = document.querySelector('.profile__add-button');
 const cardContainer = document.querySelector('.element');

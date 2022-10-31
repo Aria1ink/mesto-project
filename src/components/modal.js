@@ -78,7 +78,7 @@ function saveProfile (evt) {
   closePopup(profilePopup);
 };
 // открытие картинок
-function openImage (src, alt) {
+export function openImage (src, alt) {
   openPopup(imagePopup);
   imagePopupImage.setAttribute('src', src);
   imagePopupImage.setAttribute('alt', alt);
