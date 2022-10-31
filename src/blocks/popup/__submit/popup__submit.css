@@ -1,6 +1,6 @@
 .popup__submit {
   background-color: rgba(0, 0, 0, 1);
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 1);
   border-radius: 2px;
   min-height: 46px;
   width: 100%;
@@ -16,7 +16,7 @@
   justify-self: center;
   align-self: flex-end;
   grid-area: button;
-  transition: background-color 0.2s ease-out 0.2s;
+  transition: background-color 0.2s linear;
 }
 .popup__submit:hover {
   background-color: rgba(0, 0, 0, .8);
