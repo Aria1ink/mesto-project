@@ -4,14 +4,12 @@ function showInputError (formElement, inputElement, errorMessage, settings) {
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settings.errorClass);
 };
-
 function hideInputError (formElement, inputElement, settings) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(settings.inputErrorClass);
   errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = '';
 };
-
 function checkInputValidity (formElement, inputElement, settings) {
   if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(inputElement.dataset.error);
@@ -29,17 +27,18 @@ function hasInvalidInput (inputList) {
   return !inputElement.validity.valid;
 });
 };
-
 function toggleButtonState (inputList, buttonElement, settings) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
-    buttonElement.classList.add(settings.inactiveButtonClass);
+    disableSubmitButton(buttonElement, settings);
   } else {
     buttonElement.disabled = false;
     buttonElement.classList.remove(settings.inactiveButtonClass);
   } 
 };
-
+export function disableSubmitButton (buttonElement, settings) {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(settings.inactiveButtonClass);
+};
 function setEventListeners (formElement, settings) {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
@@ -51,7 +50,6 @@ function setEventListeners (formElement, settings) {
     });
   });
 };
-
 export function enableValidation (settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {

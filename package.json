@@ -18,9 +18,7 @@
   },
   "homepage": "https://github.com/Aria1ink/mesto-project#readme",
   "dependencies": {
-    "core-js": "^3.26.0",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "core-js": "^3.26.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
@@ -33,6 +31,8 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

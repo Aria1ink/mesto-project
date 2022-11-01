@@ -1,18 +1,7 @@
-import {openImage, closePopup, cardPopup} from './modal.js';
+import { openImage } from './index.js';
 //cards
-export const openCardPopup = document.querySelector('.profile__add-button');
 const cardContainer = document.querySelector('.element');
-const cardPlaceNameInput = document.getElementById('place-name');
-const cardPlaceLinkInput = document.getElementById('place-link');
-// получение содержимого карточки для создания
-export function saveCard (evt) {
-  evt.preventDefault();
-  const item = {};
-  item['name'] = cardPlaceNameInput.value;
-  item['link'] = cardPlaceLinkInput.value;
-  createCard(item);
-  closePopup(cardPopup);
-};
+
 // формирование шаблона карточки
 function getCard (item) {
   const cardTemplate = document.querySelector('#cardTemplate').content;
