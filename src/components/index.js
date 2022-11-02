@@ -4,7 +4,7 @@ import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
 import { initialCards, settings, connectionData }from './data.js';
 import { disableSubmitButton } from './validate.js';
-import { getUserProfile, setUserProfile } from './api.js';
+import { getUserProfileApi, setUserProfileApi } from './api.js';
 
 // profile
 const profileName = document.querySelector('.profile__name');
@@ -57,7 +57,7 @@ function writeProfileData (userData) {
 };
 // забираем информацию о пользователе
 function getProfileData (connectionData) {
-  getUserProfile(connectionData)
+  getUserProfileApi(connectionData)
     .then(res => {
       if (res.ok) {
         return res.json();
@@ -77,7 +77,7 @@ function saveProfile (evt) {
   userData.name = profileNameInput.value;
   userData.about = profileAboutInput.value;
   profileSubmitBtn.textContent = 'Сохранение...';
-  setUserProfile(connectionData, userData)
+  setUserProfileApi(connectionData, userData)
     .then(res => {
       if (res.ok) {
         writeProfileData(userData);

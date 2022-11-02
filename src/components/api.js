@@ -1,12 +1,12 @@
 // Действия с профилем пользователя
-export function getUserProfile (connectionData) {
+export function getUserProfileApi (connectionData) {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/users/me `, {
     headers: {
       authorization: connectionData.token
     }
   })
 }
-export function setUserProfile (connectionData, userData) {
+export function setUserProfileApi (connectionData, userData) {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/users/me `, {
     method: 'PATCH',
     headers: {
