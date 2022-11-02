@@ -1,5 +1,3 @@
-import { disableSubmitButton } from './validate.js';
-import { settings } from './data.js';
 // открытие попапов
 export function openPopup (popup) {
   popup.classList.add('popup_opened');
@@ -23,7 +21,6 @@ export function closePopup (popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('mousedown', closePopupByEvt);
   document.removeEventListener('keydown', closePopupByKey);
-  disableSubmitButton(popup.querySelector('.popup__submit'), settings);
 };
 // закрыть ближайший попап
 function hideClosestPopup (evt) {

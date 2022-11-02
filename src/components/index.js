@@ -3,14 +3,15 @@ import { enableValidation } from './validate.js';
 import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
 import { initialCards, settings }from './data.js';
+import { disableSubmitButton } from './validate.js';
 
 // profile
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
-const openProfilePopupButton = document.querySelector('.profile__edit-button');
-const cardPopupOpenButton = document.querySelector('.profile__add-button');
+const buttonOpenProfilePopup = document.querySelector('.profile__edit-button');
+const buttonOpenCardPopup = document.querySelector('.profile__add-button');
 // popups
-const closePopupButtons = document.querySelectorAll('.popup__close');
+const buttonsClosePopup = document.querySelectorAll('.popup__close');
 const imagePopup = document.querySelector('.image-popup');
 const imagePopupImage = imagePopup.querySelector('.popup__image');
 const imagePopupCaption = imagePopup.querySelector('.popup__caption');
@@ -23,13 +24,13 @@ const cardPopupForm = cardPopup.querySelector('.popup__form');
 const cardPlaceNameInput = document.getElementById('place-name');
 const cardPlaceLinkInput = document.getElementById('place-link');
 // кнопки закрытия попапов
-closePopupButtons.forEach((button) => {
+buttonsClosePopup.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 // кнопки открытия попапов
-openProfilePopupButton.addEventListener('click', openProfilePopup);
-cardPopupOpenButton.addEventListener('click', () => {
+buttonOpenProfilePopup.addEventListener('click', openProfilePopup);
+buttonOpenCardPopup.addEventListener('click', () => {
   openPopup(cardPopup);
   resetForm(cardPopupForm);
 });
@@ -53,6 +54,7 @@ function saveProfile (evt) {
   profileName.textContent = profileNameInput.value;
   profileAbout.textContent = profileAboutInput.value;
   closePopup(profilePopup);
+  disableSubmitButton(profilePopup.querySelector('.popup__submit'), settings);
 };
 // открытие картинок
 export function openImage (src, alt) {
@@ -73,6 +75,7 @@ function saveCard (evt) {
   item['link'] = cardPlaceLinkInput.value;
   createCard(item);
   closePopup(cardPopup);
+  disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
 };
 // включаем валидацию форм
 enableValidation(settings);
