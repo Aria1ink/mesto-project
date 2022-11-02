@@ -2,8 +2,9 @@ import '../pages/index.css';
 import { enableValidation } from './validate.js';
 import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
-import { initialCards, settings }from './data.js';
+import { initialCards, settings, connectionData }from './data.js';
 import { disableSubmitButton } from './validate.js';
+import { getUserProfile, setUserProfile } from './api.js';
 
 // profile
 const profileName = document.querySelector('.profile__name');
@@ -49,7 +50,12 @@ export function openProfilePopup () {
   profileAboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
 };
-// загрузка профиля при открытии страницы
+// запись данных профиля
+function writeProfileData (userData) {
+  profileName.textContent = userData.name;
+  profileAbout.textContent = userData.about;
+};
+// забираем информацию о пользователе
 function getProfileData (connectionData) {
   getUserProfile(connectionData)
     .then(res => {
@@ -57,8 +63,8 @@ function getProfileData (connectionData) {
         return res.json();
       }
     })
-    .then(data => {
-      
+    .then(userData => {
+      writeProfileData(userData);
     })
     .catch(err => {
       console.log(err);
@@ -74,8 +80,7 @@ function saveProfile (evt) {
   setUserProfile(connectionData, userData)
     .then(res => {
       if (res.ok) {
-        profileName.textContent = userData.name;
-        profileAbout.textContent = userData.about;
+        writeProfileData(userData);
         closePopup(profilePopup);
       } else {
         Promise.reject(`Ошибка: ${res.status}`);
@@ -110,5 +115,7 @@ function saveCard (evt) {
   closePopup(cardPopup);
   disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
 };
+//загрузка информации о пользователе
+getProfileData(connectionData);
 // включаем валидацию форм
 enableValidation(settings);
