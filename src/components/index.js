@@ -2,7 +2,8 @@ import '../pages/index.css';
 import { enableValidation } from './validate.js';
 import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
-import { initialCards, settings }from './data.js';
+import { initialCards, settings, connectionData } from './data.js';
+import { setUserProfile } from './api.js';
 
 // profile
 const profileName = document.querySelector('.profile__name');
@@ -16,7 +17,8 @@ const imagePopupImage = imagePopup.querySelector('.popup__image');
 const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 const profilePopup = document.querySelector('.profile-popup');
 const profileNameInput = document.getElementById('user-name');
-const profileAboutInput= document.getElementById('user-info');
+const profileAboutInput = document.getElementById('user-info');
+const profileSubmitBtn = profilePopup.querySelector('.popup__submit')
 export const cardPopup = document.querySelector('.card-popup');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
 // cards
@@ -47,12 +49,44 @@ export function openProfilePopup () {
   profileAboutInput.value = profileAbout.textContent;
   openPopup(profilePopup);
 };
+// загрузка профиля при открытии страницы
+function getProfileData (connectionData) {
+  getUserProfile(connectionData)
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(data => {
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
 // сохранение профиля
 function saveProfile (evt) {
   evt.preventDefault(); 
-  profileName.textContent = profileNameInput.value;
-  profileAbout.textContent = profileAboutInput.value;
-  closePopup(profilePopup);
+  const userData = {};
+  userData.name = profileNameInput.value;
+  userData.about = profileAboutInput.value;
+  profileSubmitBtn.textContent = 'Сохранение...';
+  setUserProfile(connectionData, userData)
+    .then(res => {
+      if (res.ok) {
+        profileName.textContent = userData.name;
+        profileAbout.textContent = userData.about;
+        closePopup(profilePopup);
+      } else {
+        Promise.reject(`Ошибка: ${res.status}`);
+      };
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      profileSubmitBtn.textContent = 'Сохранить';
+    });
 };
 // открытие картинок
 export function openImage (src, alt) {
