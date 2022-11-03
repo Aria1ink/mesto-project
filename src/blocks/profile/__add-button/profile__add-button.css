@@ -12,7 +12,7 @@
   background-size: 16px 16px;
   margin: 0;
   padding: 0;
-  transition: opacity 0.2s ease-out 0.2s;
+  transition: opacity 0.2s linear;
 }
 .profile__add-button:hover {
   opacity: .6;

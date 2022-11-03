@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   align-self: flex-end;
-  transition: opacity 0.2s ease-out 0.2s;
+  transition: opacity 0.2s linear;
 }
 .popup__close:hover{
   opacity: .6;

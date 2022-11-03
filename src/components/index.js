@@ -4,13 +4,15 @@ import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
 import { initialCards, settings, connectionData }from './data.js';
 import { disableSubmitButton } from './validate.js';
-import { getUserProfileApi, setUserProfileApi } from './api.js';
+import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi } from './api.js';
 
 // profile
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
+const profileAvatar = document.querySelector('.profile__avatar');
 const buttonOpenProfilePopup = document.querySelector('.profile__edit-button');
 const buttonOpenCardPopup = document.querySelector('.profile__add-button');
+const buttonEditAvatar = document.querySelector('.profile__edit-avatar');
 // popups
 const buttonsClosePopup = document.querySelectorAll('.popup__close');
 const imagePopup = document.querySelector('.image-popup');
@@ -19,9 +21,13 @@ const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 const profilePopup = document.querySelector('.profile-popup');
 const profileNameInput = document.getElementById('user-name');
 const profileAboutInput = document.getElementById('user-info');
-const profileSubmitBtn = profilePopup.querySelector('.popup__submit')
+const profileAvatarInput = document.getElementById('avatar-link');
+const profileSubmitBtn = profilePopup.querySelector('.popup__submit');
 export const cardPopup = document.querySelector('.card-popup');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
+const avatarPopup = document.querySelector('.edit-avatar-popup');
+const avatarPopupForm = avatarPopup.querySelector('.popup__form');
+const avatarSubmitBtn = avatarPopupForm.querySelector('.popup__submit');
 // cards
 const cardPlaceNameInput = document.getElementById('place-name');
 const cardPlaceLinkInput = document.getElementById('place-link');
@@ -36,9 +42,14 @@ buttonOpenCardPopup.addEventListener('click', () => {
   openPopup(cardPopup);
   resetForm(cardPopupForm);
 });
+buttonEditAvatar.addEventListener('click', () => {
+  openPopup(avatarPopup);
+  resetForm(avatarPopupForm);
+});
 // Кнопки сохранения попапов
 profilePopup.addEventListener('submit', saveProfile);
 cardPopup.addEventListener('submit', saveCard);
+avatarPopup.addEventListener('submit', saveAvatar);
 initialCards.forEach(createCard);
 // сброс данных формы
 export function resetForm (form) {
@@ -55,16 +66,22 @@ function writeProfileData (userData) {
   profileName.textContent = userData.name;
   profileAbout.textContent = userData.about;
 };
+function writeProfileAvatar (avatarLink) {
+  profileAvatar.src = avatarLink;
+};
 // забираем информацию о пользователе
 function getProfileData (connectionData) {
   getUserProfileApi(connectionData)
     .then(res => {
       if (res.ok) {
         return res.json();
-      }
+      } else {
+        Promise.reject(`Ошибка: ${res.status}`);
+      };
     })
     .then(userData => {
       writeProfileData(userData);
+      writeProfileAvatar(userData.avatar);
     })
     .catch(err => {
       console.log(err);
@@ -77,7 +94,7 @@ function saveProfile (evt) {
   userData.name = profileNameInput.value;
   userData.about = profileAboutInput.value;
   profileSubmitBtn.textContent = 'Сохранение...';
-  setUserProfileApi(connectionData, userData)
+  setUserProfileInfoApi(connectionData, userData)
     .then(res => {
       if (res.ok) {
         writeProfileData(userData);
@@ -94,6 +111,27 @@ function saveProfile (evt) {
       disableSubmitButton(profilePopup.querySelector('.popup__submit'), settings);
     });
 };
+function saveAvatar (evt) {
+  evt.preventDefault(); 
+  const avatarLink = profileAvatarInput.value;
+  avatarSubmitBtn.textContent = 'Сохранение...';
+  setUserProfileAvatarApi(connectionData, avatarLink)
+    .then(res => {
+      if (res.ok) {
+        writeProfileAvatar(avatarLink);
+        closePopup(avatarPopup);
+      } else {
+        Promise.reject(`Ошибка: ${res.status}`);
+      };
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      avatarSubmitBtn.textContent = 'Сохранить';
+      disableSubmitButton(avatarPopup.querySelector('.popup__submit'), settings);
+    });
+}
 // открытие картинок
 export function openImage (src, alt) {
   openPopup(imagePopup);
