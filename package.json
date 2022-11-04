@@ -1,5 +1,5 @@
 {
-  "name": "mesto-project",
+  "name": "mesto",
   "version": "1.0.0",
   "description": "Лента фото с возможностью ставить лайки и простым профилем пользователя.",
   "main": "index.js",
