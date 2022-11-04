@@ -4,7 +4,7 @@ import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
 import { initialCards, settings, connectionData }from './data.js';
 import { disableSubmitButton } from './validate.js';
-import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCards } from './api.js';
+import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCardsApi } from './api.js';
 
 // profile
 let userID = '';
@@ -146,7 +146,7 @@ function saveCard (evt) {
   disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
 };
 function loadCards (connectionData){
-  getCards(connectionData)
+  getCardsApi(connectionData)
     .then(checkPromiseResult)
     .then(cards => {
       cards.forEach(card => {

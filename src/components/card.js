@@ -1,8 +1,8 @@
 import { openImage, checkPromiseResult } from './index.js';
-import { setCardLike } from './api.js';
+import { setCardLikeApi } from './api.js';
 import { connectionData } from './data.js';
-//cards
 const cardContainer = document.querySelector('.element');
+// лайки
 function countLikes (card) {
   return card.likes.length;
 };
@@ -12,6 +12,32 @@ function isILikeIT (card) {
 function writeLikeCount (cardLikesCounter, likeSum) {
   cardLikesCounter.textContent = likeSum;
 }
+function toggleLike ( cardLike) {
+  cardLike.classList.toggle('like_status_active');
+}
+function addLike ( evt, cardID, cardLike, cardLikesCounter ) {
+  if (evt.target.classList.contains('like_status_active')) {
+    setCardLikeApi(connectionData, cardID, 'DELETE')
+      .then(checkPromiseResult)
+      .then(card => {
+        writeLikeCount(cardLikesCounter, countLikes(card));
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  } else {
+    setCardLikeApi(connectionData, cardID, 'PUT')
+      .then(checkPromiseResult)
+      .then(card => {
+        writeLikeCount(cardLikesCounter, countLikes(card));
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  };
+  toggleLike (cardLike);
+};
+// карточки
 // формирование шаблона карточки
 function getCard (item) {
   const cardTemplate = document.querySelector('#cardTemplate').content;
@@ -46,29 +72,3 @@ export function createCard (item) {
 function removeCard (evt) {
   evt.target.closest('.element__card').remove();
 };
-// лайки
-function addLike ( evt, cardID, cardLike, cardLikesCounter ) {
-  if (evt.target.classList.contains('like_status_active')) {
-    setCardLike(connectionData, cardID, 'DELETE')
-      .then(checkPromiseResult)
-      .then(card => {
-        writeLikeCount(cardLikesCounter, countLikes(card));
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  } else {
-    setCardLike(connectionData, cardID, 'PUT')
-      .then(checkPromiseResult)
-      .then(card => {
-        writeLikeCount(cardLikesCounter, countLikes(card));
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  };
-  toggleLike (cardLike);
-};
-function toggleLike ( cardLike) {
-  cardLike.classList.toggle('like_status_active');
-}
