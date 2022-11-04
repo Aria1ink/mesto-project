@@ -4,7 +4,7 @@ import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
 import { initialCards, settings, connectionData }from './data.js';
 import { disableSubmitButton } from './validate.js';
-import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCardsApi } from './api.js';
+import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCardsApi, setCardApi } from './api.js';
 
 // profile
 let userID = '';
@@ -141,9 +141,13 @@ function saveCard (evt) {
   const item = {};
   item['name'] = cardPlaceNameInput.value;
   item['link'] = cardPlaceLinkInput.value;
-  createCard(item);
-  closePopup(cardPopup);
-  disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
+  setCardApi(connectionData, item)
+    .then(checkPromiseResult)
+    .then(card => {
+      createCard(card);
+      closePopup(cardPopup);
+      disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
+    });
 };
 function loadCards (connectionData){
   getCardsApi(connectionData)

@@ -39,7 +39,7 @@ export function getCardsApi (connectionData) {
     }
   });
 };
-function setCardApi (connectionData, cardData) {
+export function setCardApi (connectionData, cardData) {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/cards`, {
     method: 'POST',
     headers: {
@@ -50,6 +50,14 @@ function setCardApi (connectionData, cardData) {
       name: cardData.name,
       link: cardData.link
     })
+  });
+};
+export function removeCardApi (connectionData, cardId) {
+  return fetch(`${connectionData.baseUrl}${connectionData.id}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: connectionData.token
+    }
   });
 };
 export function setCardLikeApi (connectionData, cardID, connectionMethod) {

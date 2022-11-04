@@ -1,5 +1,5 @@
 import { openImage, checkPromiseResult } from './index.js';
-import { setCardLikeApi } from './api.js';
+import { setCardLikeApi, removeCardApi } from './api.js';
 import { connectionData } from './data.js';
 const cardContainer = document.querySelector('.element');
 // лайки
@@ -48,9 +48,13 @@ function getCard (item) {
   card.querySelector('.element__title').textContent = item.name;
   cardImage.src = item.link;
   cardImage.alt = item.name;
-  card.querySelector('.like').addEventListener('click', evt => {addLike(evt, item._id, cardLike, cardLikesCounter);});
+  card.querySelector('.like').addEventListener('click', evt => {
+    addLike(evt, item._id, cardLike, cardLikesCounter);
+  });
   if (item.owner._id == '43a35a073393c920572f7de1') {
-    card.querySelector('.element__remove').addEventListener('click', removeCard);
+    card.querySelector('.element__remove').addEventListener('click', () => {
+      removeCard(item._id, card);
+    });
   } else {
     card.removeChild(card.querySelector('.element__remove'));
   };
@@ -69,6 +73,16 @@ export function createCard (item) {
   };
 };
 // удаление карточки
-function removeCard (evt) {
-  evt.target.closest('.element__card').remove();
+function removeCard ( cardId, card) {
+  removeCardApi(connectionData, cardId)
+  .then(checkPromiseResult)
+  .then(() => {
+    removeCardItem(card);
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+function removeCardItem (card) {
+  card.remove();
 };
