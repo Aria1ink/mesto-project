@@ -1,4 +1,4 @@
-import { openImage, checkPromiseResult } from './index.js';
+import { openImage, checkPromiseResult, userId } from './index.js';
 import { setCardLikeApi, removeCardApi } from './api.js';
 import { connectionData } from './data.js';
 const cardContainer = document.querySelector('.element');
@@ -7,7 +7,7 @@ function countLikes (card) {
   return card.likes.length;
 };
 function isILikeIT (card) {
-  return card.likes.some(like => like._id == '43a35a073393c920572f7de1');
+  return card.likes.some(like => like._id == userId);
 }
 function writeLikeCount (cardLikesCounter, likeSum) {
   cardLikesCounter.textContent = likeSum;
@@ -51,7 +51,7 @@ function getCard (item) {
   card.querySelector('.like').addEventListener('click', evt => {
     addLike(evt, item._id, cardLike, cardLikesCounter);
   });
-  if (item.owner._id == '43a35a073393c920572f7de1') {
+  if (item.owner._id == userId) {
     card.querySelector('.element__remove').addEventListener('click', () => {
       removeCard(item._id, card);
     });

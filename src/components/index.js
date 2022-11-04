@@ -7,7 +7,7 @@ import { disableSubmitButton } from './validate.js';
 import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCardsApi, setCardApi } from './api.js';
 
 // profile
-let userID = '';
+export let userId = '';
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const profileAvatar = document.querySelector('.profile__avatar');
@@ -73,15 +73,17 @@ function writeProfileAvatar (avatarLink) {
 };
 // забираем информацию о пользователе
 function getProfileData (connectionData) {
-  getUserProfileApi(connectionData)
+  const userId = getUserProfileApi(connectionData)
     .then(checkPromiseResult)
     .then(userData => {
       writeProfileData(userData);
       writeProfileAvatar(userData.avatar);
+      return userData._id;
     })
     .catch(err => {
       console.log(err);
     })
+    return userId;
 }
 // сохранение профиля
 function saveProfile (evt) {
@@ -175,8 +177,15 @@ export function checkPromiseResult (res) {
 };
 // загрузка
 //загрузка информации о пользователе
-getProfileData(connectionData);
-// загрузка карточек
-loadCards(connectionData);
+getProfileData(connectionData)
+  .then(id => {
+    userId = id;
+    // загрузка карточек
+    loadCards(connectionData);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
 // включаем валидацию форм
 enableValidation(settings);
