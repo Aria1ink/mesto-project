@@ -32,7 +32,7 @@ export function setUserProfileAvatarApi (connectionData, avatarLink) {
   });
 };
 // Действия с карточками
-function getCards (connectionData) {
+export function getCards (connectionData) {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/cards`, {
     headers: {
       authorization: connectionData.token
@@ -50,5 +50,13 @@ function setCard (connectionData, cardData) {
       name: cardData.name,
       link: cardData.link
     })
+  });
+};
+export function setCardLike (connectionData, cardID, connectionMethod) {
+  return fetch(`${connectionData.baseUrl}${connectionData.id}/cards/likes/${cardID}`, {
+    method: connectionMethod,
+    headers: {
+      authorization: connectionData.token
+    }
   });
 };

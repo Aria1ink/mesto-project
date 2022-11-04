@@ -4,9 +4,10 @@ import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
 import { initialCards, settings, connectionData }from './data.js';
 import { disableSubmitButton } from './validate.js';
-import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi } from './api.js';
+import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCards } from './api.js';
 
 // profile
+let userID = '';
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const profileAvatar = document.querySelector('.profile__avatar');
@@ -50,7 +51,7 @@ buttonEditAvatar.addEventListener('click', () => {
 profilePopup.addEventListener('submit', saveProfile);
 cardPopup.addEventListener('submit', saveCard);
 avatarPopup.addEventListener('submit', saveAvatar);
-initialCards.forEach(createCard);
+// initialCards.forEach(createCard);
 // сброс данных формы
 export function resetForm (form) {
   form.reset();
@@ -80,6 +81,7 @@ function getProfileData (connectionData) {
       };
     })
     .then(userData => {
+      userID = '123';
       writeProfileData(userData);
       writeProfileAvatar(userData.avatar);
     })
@@ -153,7 +155,28 @@ function saveCard (evt) {
   closePopup(cardPopup);
   disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
 };
+function loadCards (connectionData){
+  getCards(connectionData)
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        Promise.reject(`Ошибка: ${res.status}`);
+      };
+    })
+    .then(cards => {
+      cards.forEach(card => {
+        createCard(card);
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    })
+};
+// загрузка
 //загрузка информации о пользователе
 getProfileData(connectionData);
+// загрузка карточек
+loadCards(connectionData);
 // включаем валидацию форм
 enableValidation(settings);
