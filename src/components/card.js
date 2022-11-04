@@ -1,4 +1,4 @@
-import { openImage } from './index.js';
+import { openImage, checkPromiseResult } from './index.js';
 import { setCardLike } from './api.js';
 import { connectionData } from './data.js';
 //cards
@@ -52,13 +52,7 @@ function addLike (evt, cardID) {
   console.log(cardID);
   if (evt.target.classList.contains('like_status_active')) {
     setCardLike(connectionData, cardID, 'DELETE')
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          Promise.reject(`Ошибка: ${res.status}`);
-        };
-      })
+      .then(checkPromiseResult)
       .then(card => {
         console.log(card);
       })
@@ -67,16 +61,10 @@ function addLike (evt, cardID) {
       })
   } else {
     setCardLike(connectionData, cardID, 'PUT')
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          Promise.reject(`Ошибка: ${res.status}`);
-        };
-      })
+      .then(checkPromiseResult)
       .then(card => {
         countLikes(card);
-        
+
       })
       .catch(err => {
         console.log(err);

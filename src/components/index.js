@@ -73,15 +73,8 @@ function writeProfileAvatar (avatarLink) {
 // забираем информацию о пользователе
 function getProfileData (connectionData) {
   getUserProfileApi(connectionData)
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        Promise.reject(`Ошибка: ${res.status}`);
-      };
-    })
+    .then(checkPromiseResult)
     .then(userData => {
-      userID = '123';
       writeProfileData(userData);
       writeProfileAvatar(userData.avatar);
     })
@@ -97,13 +90,10 @@ function saveProfile (evt) {
   userData.about = profileAboutInput.value;
   profileSubmitBtn.textContent = 'Сохранение...';
   setUserProfileInfoApi(connectionData, userData)
-    .then(res => {
-      if (res.ok) {
-        writeProfileData(userData);
-        closePopup(profilePopup);
-      } else {
-        Promise.reject(`Ошибка: ${res.status}`);
-      };
+    .then(checkPromiseResult)
+    .then(userData => {
+      writeProfileData(userData);
+      closePopup(profilePopup);
     })
     .catch(err => {
       console.log(err);
@@ -157,13 +147,7 @@ function saveCard (evt) {
 };
 function loadCards (connectionData){
   getCards(connectionData)
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        Promise.reject(`Ошибка: ${res.status}`);
-      };
-    })
+    .then(checkPromiseResult)
     .then(cards => {
       cards.forEach(card => {
         createCard(card);
@@ -172,6 +156,13 @@ function loadCards (connectionData){
     .catch(err => {
       console.log(err);
     })
+};
+export function checkPromiseResult (res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    Promise.reject(`Ошибка: ${res.status}`);
+  };
 };
 // загрузка
 //загрузка информации о пользователе
