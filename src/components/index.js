@@ -26,6 +26,7 @@ const profileAvatarInput = document.getElementById('avatar-link');
 const profileSubmitBtn = profilePopup.querySelector('.popup__submit');
 export const cardPopup = document.querySelector('.card-popup');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
+const cardSubmitBtn = cardPopup.querySelector('.popup__submit');
 const avatarPopup = document.querySelector('.edit-avatar-popup');
 const avatarPopupForm = avatarPopup.querySelector('.popup__form');
 const avatarSubmitBtn = avatarPopupForm.querySelector('.popup__submit');
@@ -141,11 +142,13 @@ function saveCard (evt) {
   const item = {};
   item['name'] = cardPlaceNameInput.value;
   item['link'] = cardPlaceLinkInput.value;
+  cardSubmitBtn.textContent = 'Сохранение...';
   setCardApi(connectionData, item)
     .then(checkPromiseResult)
     .then(card => {
       createCard(card);
       closePopup(cardPopup);
+      cardSubmitBtn.textContent = 'Создать'
       disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
     });
 };
