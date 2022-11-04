@@ -1,12 +1,12 @@
 // Действия с профилем пользователя
-export function getUserProfileApi (connectionData) {
+export const getUserProfileApi = (connectionData) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/users/me `, {
     headers: {
       authorization: connectionData.token
     }
   });
 };
-export function setUserProfileInfoApi (connectionData, userData) {
+export const setUserProfileInfoApi = (connectionData, userData) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/users/me `, {
     method: 'PATCH',
     headers: {
@@ -19,7 +19,7 @@ export function setUserProfileInfoApi (connectionData, userData) {
     })
   });
 };
-export function setUserProfileAvatarApi (connectionData, avatarLink) {
+export const setUserProfileAvatarApi = (connectionData, avatarLink) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/users/me/avatar`, {
     method: 'PATCH',
     headers: {
@@ -32,14 +32,14 @@ export function setUserProfileAvatarApi (connectionData, avatarLink) {
   });
 };
 // Действия с карточками
-export function getCardsApi (connectionData) {
+export const getCardsApi = (connectionData) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/cards`, {
     headers: {
       authorization: connectionData.token
     }
   });
 };
-export function setCardApi (connectionData, cardData) {
+export const setCardApi = (connectionData, cardData) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/cards`, {
     method: 'POST',
     headers: {
@@ -52,7 +52,7 @@ export function setCardApi (connectionData, cardData) {
     })
   });
 };
-export function removeCardApi (connectionData, cardId) {
+export const removeCardApi = (connectionData, cardId) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/cards/${cardId}`, {
     method: 'DELETE',
     headers: {
@@ -60,7 +60,7 @@ export function removeCardApi (connectionData, cardId) {
     }
   });
 };
-export function setCardLikeApi (connectionData, cardID, connectionMethod) {
+export const setCardLikeApi = (connectionData, cardID, connectionMethod) => {
   return fetch(`${connectionData.baseUrl}${connectionData.id}/cards/likes/${cardID}`, {
     method: connectionMethod,
     headers: {
