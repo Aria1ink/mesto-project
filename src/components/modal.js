@@ -1,8 +1,8 @@
 // открытие попапов
 export function openPopup (popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('mousedown', closePopupByEvt);
-  document.addEventListener('keydown', closePopupByKey);
+  popup.addEventListener('mousedown', closePopupByEvt);
+  popup.addEventListener('keydown', closePopupByKey);
 };
 // закрытие через событие
 function closePopupByEvt (evt) {

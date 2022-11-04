@@ -2,7 +2,7 @@ import '../pages/index.css';
 import { enableValidation } from './validate.js';
 import { createCard } from './card';
 import { openPopup, closePopup } from './modal.js';
-import { initialCards, settings, connectionData }from './data.js';
+import { settings }from './data.js';
 import { disableSubmitButton } from './validate.js';
 import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCardsApi, setCardApi } from './api.js';
 
@@ -72,19 +72,10 @@ function writeProfileAvatar (avatarLink) {
   profileAvatar.src = avatarLink;
 };
 // забираем информацию о пользователе
-function getProfileData (connectionData) {
-  const userId = getUserProfileApi(connectionData)
-    .then(checkPromiseResult)
-    .then(userData => {
-      writeProfileData(userData);
-      writeProfileAvatar(userData.avatar);
-      return userData._id;
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    return userId;
-}
+function getProfileData (userData) {
+  writeProfileData(userData);
+  writeProfileAvatar(userData.avatar);
+};
 // сохранение профиля
 function saveProfile (evt) {
   evt.preventDefault(); 
@@ -92,39 +83,34 @@ function saveProfile (evt) {
   userData.name = profileNameInput.value;
   userData.about = profileAboutInput.value;
   profileSubmitBtn.textContent = 'Сохранение...';
-  setUserProfileInfoApi(connectionData, userData)
-    .then(checkPromiseResult)
+  setUserProfileInfoApi(userData)
     .then(userData => {
       writeProfileData(userData);
       closePopup(profilePopup);
+      disableSubmitButton(profilePopup.querySelector('.popup__submit'), settings);
     })
     .catch(err => {
       console.log(err);
     })
     .finally(() => {
       profileSubmitBtn.textContent = 'Сохранить';
-      disableSubmitButton(profilePopup.querySelector('.popup__submit'), settings);
     });
 };
 function saveAvatar (evt) {
   evt.preventDefault(); 
   const avatarLink = profileAvatarInput.value;
   avatarSubmitBtn.textContent = 'Сохранение...';
-  setUserProfileAvatarApi(connectionData, avatarLink)
-    .then(res => {
-      if (res.ok) {
+  setUserProfileAvatarApi(avatarLink)
+    .then(() => {
         writeProfileAvatar(avatarLink);
         closePopup(avatarPopup);
-      } else {
-        Promise.reject(`Ошибка: ${res.status}`);
-      };
+        disableSubmitButton(avatarPopup.querySelector('.popup__submit'), settings);
     })
     .catch(err => {
       console.log(err);
     })
     .finally(() => {
       avatarSubmitBtn.textContent = 'Сохранить';
-      disableSubmitButton(avatarPopup.querySelector('.popup__submit'), settings);
     });
 }
 // открытие картинок
@@ -145,47 +131,33 @@ function saveCard (evt) {
   item['name'] = cardPlaceNameInput.value;
   item['link'] = cardPlaceLinkInput.value;
   cardSubmitBtn.textContent = 'Сохранение...';
-  setCardApi(connectionData, item)
-    .then(checkPromiseResult)
+  setCardApi(item)
     .then(card => {
       createCard(card);
       closePopup(cardPopup);
+      disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
     })
     .finally(() => {
       cardSubmitBtn.textContent = 'Создать'
-      disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
     });
 };
-function loadCards (connectionData){
-  getCardsApi(connectionData)
-    .then(checkPromiseResult)
-    .then(cards => {
-      cards.forEach(card => {
-        createCard(card);
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    })
-};
-export function checkPromiseResult (res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    Promise.reject(`Ошибка: ${res.status}`);
-  };
+function loadCards (cards) {
+  cards.forEach(card => {
+    createCard(card);
+  });
 };
 // загрузка
 //загрузка информации о пользователе
-getProfileData(connectionData)
-  .then(id => {
-    userId = id;
-    // загрузка карточек
-    loadCards(connectionData);
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
+Promise.all([
+  getUserProfileApi(),
+  getCardsApi() ])
+  .then(([info, initialCards])=>{
+    userId = info._id;
+    getProfileData(info);
+    loadCards(initialCards);
+  }) 
+  .catch((err)=>{
+  console.log(err);
+  }) 
 // включаем валидацию форм
 enableValidation(settings);

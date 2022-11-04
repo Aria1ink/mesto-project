@@ -1,6 +1,5 @@
-import { openImage, checkPromiseResult, userId } from './index.js';
+import { openImage, userId } from './index.js';
 import { setCardLikeApi, removeCardApi } from './api.js';
-import { connectionData } from './data.js';
 const cardContainer = document.querySelector('.element');
 // лайки
 function countLikes (card) {
@@ -17,25 +16,24 @@ function toggleLike (cardLike) {
 }
 function addLike (evt, cardID, cardLike, cardLikesCounter) {
   if (evt.target.classList.contains('like_status_active')) {
-    setCardLikeApi(connectionData, cardID, 'DELETE')
-      .then(checkPromiseResult)
+    setCardLikeApi(cardID, 'DELETE')
       .then(card => {
         writeLikeCount(cardLikesCounter, countLikes(card));
+        toggleLike (cardLike);
       })
       .catch(err => {
         console.log(err);
       })
   } else {
-    setCardLikeApi(connectionData, cardID, 'PUT')
-      .then(checkPromiseResult)
+    setCardLikeApi(cardID, 'PUT')
       .then(card => {
         writeLikeCount(cardLikesCounter, countLikes(card));
+        toggleLike (cardLike);
       })
       .catch(err => {
         console.log(err);
       })
   };
-  toggleLike (cardLike);
 };
 // карточки
 // формирование шаблона карточки
@@ -74,8 +72,7 @@ export function createCard (item) {
 };
 // удаление карточки
 function removeCard (cardId, card) {
-  removeCardApi(connectionData, cardId)
-  .then(checkPromiseResult)
+  removeCardApi(cardId)
   .then(() => {
     removeCardItem(card);
   })
