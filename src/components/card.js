@@ -12,10 +12,10 @@ function isILikeIT (card) {
 function writeLikeCount (cardLikesCounter, likeSum) {
   cardLikesCounter.textContent = likeSum;
 }
-function toggleLike ( cardLike) {
+function toggleLike (cardLike) {
   cardLike.classList.toggle('like_status_active');
 }
-function addLike ( evt, cardID, cardLike, cardLikesCounter ) {
+function addLike (evt, cardID, cardLike, cardLikesCounter) {
   if (evt.target.classList.contains('like_status_active')) {
     setCardLikeApi(connectionData, cardID, 'DELETE')
       .then(checkPromiseResult)
@@ -73,7 +73,7 @@ export function createCard (item) {
   };
 };
 // удаление карточки
-function removeCard ( cardId, card) {
+function removeCard (cardId, card) {
   removeCardApi(connectionData, cardId)
   .then(checkPromiseResult)
   .then(() => {
