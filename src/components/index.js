@@ -148,6 +148,8 @@ function saveCard (evt) {
     .then(card => {
       createCard(card);
       closePopup(cardPopup);
+    })
+    .finally(() => {
       cardSubmitBtn.textContent = 'Создать'
       disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
     });
