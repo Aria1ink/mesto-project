@@ -11,7 +11,7 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s ease-out 0.2s;
+  transition: opacity 0.2s linear;
 }
 .popup::after {
   width: 100vw;

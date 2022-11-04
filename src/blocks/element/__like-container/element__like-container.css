@@ -1,11 +1,11 @@
-.popup__input-fields {
+.element__like-container {
+  align-self: center;
+  justify-self: center;
   margin: 0;
   padding: 0;
-  margin: 0;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  grid-area: input;
+  gap: 3px;
 }

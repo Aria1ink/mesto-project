@@ -6,7 +6,7 @@
   height: 19px;
   border: none;
   background-color: transparent;
-  transition: opacity 0.2s ease-out 0.2s;
+  transition: opacity 0.2s linear;
 }
 .like:hover {
   opacity: .5;

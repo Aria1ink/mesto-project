@@ -1,12 +1,8 @@
 .profile__avatar {
   width: 120px;
+  height: 120px;
   border-radius: 50%;
+  object-fit: cover;
   margin: 0;
   padding: 0;
-  justify-self: center;
-}
-@media screen and (min-width: 768px) {
-  .profile__avatar {
-    justify-self: flex-start;
-  }
 }
