@@ -43,10 +43,12 @@ buttonOpenProfilePopup.addEventListener('click', openProfilePopup);
 buttonOpenCardPopup.addEventListener('click', () => {
   openPopup(cardPopup);
   resetForm(cardPopupForm);
+  disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
 });
 buttonEditAvatar.addEventListener('click', () => {
   openPopup(avatarPopup);
   resetForm(avatarPopupForm);
+  disableSubmitButton(avatarPopup.querySelector('.popup__submit'), settings);
 });
 // Кнопки сохранения попапов
 profilePopup.addEventListener('submit', saveProfile);
@@ -87,7 +89,6 @@ function saveProfile (evt) {
     .then(userData => {
       writeProfileData(userData);
       closePopup(profilePopup);
-      disableSubmitButton(profilePopup.querySelector('.popup__submit'), settings);
     })
     .catch(err => {
       console.log(err);
@@ -104,7 +105,6 @@ function saveAvatar (evt) {
     .then(() => {
         writeProfileAvatar(avatarLink);
         closePopup(avatarPopup);
-        disableSubmitButton(avatarPopup.querySelector('.popup__submit'), settings);
     })
     .catch(err => {
       console.log(err);
@@ -135,7 +135,6 @@ function saveCard (evt) {
     .then(card => {
       createCard(card);
       closePopup(cardPopup);
-      disableSubmitButton(cardPopup.querySelector('.popup__submit'), settings);
     })
     .finally(() => {
       cardSubmitBtn.textContent = 'Создать'

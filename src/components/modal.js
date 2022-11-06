@@ -2,7 +2,7 @@
 export function openPopup (popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('mousedown', closePopupByEvt);
-  popup.addEventListener('keydown', closePopupByKey);
+  document.addEventListener('keydown', closePopupByKey);
 };
 // закрытие через событие
 function closePopupByEvt (evt) {
@@ -19,7 +19,7 @@ function closePopupByKey (evt) {
 // закрытие попапа
 export function closePopup (popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('mousedown', closePopupByEvt);
+  popup.removeEventListener('mousedown', closePopupByEvt);
   document.removeEventListener('keydown', closePopupByKey);
 };
 // закрыть ближайший попап
