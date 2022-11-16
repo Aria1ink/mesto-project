@@ -1,11 +1,11 @@
 import { openImage, userId } from './index.js';
-import { setCardLikeApi, removeCardApi } from './api.js';
+import { api } from './api.js';
 const cardContainer = document.querySelector('.element');
 // лайки
 function countLikes (card) {
   return card.likes.length;
 };
-function isILikeIT (card) {
+function isILikeIt (card) {
   return card.likes.some(like => like._id == userId);
 }
 function writeLikeCount (cardLikesCounter, likeSum) {
@@ -16,7 +16,7 @@ function toggleLike (cardLike) {
 }
 function addLike (evt, cardID, cardLike, cardLikesCounter) {
   if (evt.target.classList.contains('like_status_active')) {
-    setCardLikeApi(cardID, 'DELETE')
+    api.setCardLikeApi(cardID, 'DELETE')
       .then(card => {
         writeLikeCount(cardLikesCounter, countLikes(card));
         toggleLike (cardLike);
@@ -25,7 +25,7 @@ function addLike (evt, cardID, cardLike, cardLikesCounter) {
         console.log(err);
       })
   } else {
-    setCardLikeApi(cardID, 'PUT')
+    api.setCardLikeApi(cardID, 'PUT')
       .then(card => {
         writeLikeCount(cardLikesCounter, countLikes(card));
         toggleLike (cardLike);
@@ -37,7 +37,7 @@ function addLike (evt, cardID, cardLike, cardLikesCounter) {
 };
 // карточки
 // формирование шаблона карточки
-function getCard (item) {
+export function getCard (item) {
   const cardTemplate = document.querySelector('#cardTemplate').content;
   const card = cardTemplate.querySelector('.element__card').cloneNode(true);
   const cardImage = card.querySelector('.element__image');
@@ -57,7 +57,7 @@ function getCard (item) {
     card.removeChild(card.querySelector('.element__remove'));
   };
   cardImage.addEventListener('click', (evt) => {openImage(cardImage.src, cardImage.alt);});
-  if (isILikeIT(item)) {
+  if (isILikeIt(item)) {
     toggleLike(cardLike);
   }
   writeLikeCount(cardLikesCounter, countLikes(item));
@@ -72,7 +72,7 @@ export function createCard (item) {
 };
 // удаление карточки
 function removeCard (cardId, card) {
-  removeCardApi(cardId)
+  api.removeCardApi(cardId)
   .then(() => {
     removeCardItem(card);
   })

@@ -1,10 +1,11 @@
 import '../pages/index.css';
 import { enableValidation } from './validate.js';
-import { createCard } from './card';
+import { createCard, getCard } from './card';
 import { openPopup, closePopup } from './modal.js';
-import { settings }from './data.js';
+import { settings } from './data.js';
 import { disableSubmitButton } from './validate.js';
-import { getUserProfileApi, setUserProfileInfoApi, setUserProfileAvatarApi, getCardsApi, setCardApi } from './api.js';
+import { api } from './api.js';
+import { Section } from './section';
 
 // profile
 export let userId = '';
@@ -85,7 +86,7 @@ function saveProfile (evt) {
   userData.name = profileNameInput.value;
   userData.about = profileAboutInput.value;
   profileSubmitBtn.textContent = 'Сохранение...';
-  setUserProfileInfoApi(userData)
+  api.setUserProfileInfoApi(userData)
     .then(userData => {
       writeProfileData(userData);
       closePopup(profilePopup);
@@ -101,7 +102,7 @@ function saveAvatar (evt) {
   evt.preventDefault(); 
   const avatarLink = profileAvatarInput.value;
   avatarSubmitBtn.textContent = 'Сохранение...';
-  setUserProfileAvatarApi(avatarLink)
+  api.setUserProfileAvatarApi(avatarLink)
     .then(() => {
         writeProfileAvatar(avatarLink);
         closePopup(avatarPopup);
@@ -131,7 +132,7 @@ function saveCard (evt) {
   item['name'] = cardPlaceNameInput.value;
   item['link'] = cardPlaceLinkInput.value;
   cardSubmitBtn.textContent = 'Сохранение...';
-  setCardApi(item)
+  api.setCardApi(item)
     .then(card => {
       createCard(card);
       closePopup(cardPopup);
@@ -140,20 +141,36 @@ function saveCard (evt) {
       cardSubmitBtn.textContent = 'Создать'
     });
 };
+/*
 function loadCards (cards) {
   cards.forEach(card => {
     createCard(card);
   });
 };
+*/
 // загрузка
 //загрузка информации о пользователе
 Promise.all([
-  getUserProfileApi(),
-  getCardsApi() ])
+  api.getUserProfileApi(),
+  api.getCardsApi() ])
   .then(([info, initialCards])=>{
     userId = info._id;
     getProfileData(info);
-    loadCards(initialCards);
+    const cardSection = new Section ({
+      data: initialCards,
+      renderer: (item) => {
+        if (item) {
+          return getCard(item);
+        };
+      }
+    },
+      settings.cardContainer
+    );
+    const data = cardSection.renderItems();
+    data.forEach(item => {
+      cardSection.addItem(item);
+    })
+    //loadCards(initialCards);
   }) 
   .catch((err)=>{
   console.log(err);
